@@ -1,5 +1,6 @@
 <h1>Fivem coordinate saver</h1>
 <h3>A fivem code with alot of coordinate saver features</h3>
+<h3>The menu can be opened with /coordsmenu</h3>
 <h2>current features:</h2>
 <h3>Saving coordinate list and after sending it to discord by webhook</h3>
 <h3>Saving coordinate to database</h3>
