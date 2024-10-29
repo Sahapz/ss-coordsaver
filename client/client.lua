@@ -7,7 +7,7 @@ local keybind = lib.addKeybind({
     end
 })
 
-RegisterCommand("coords", function(source, args, rawCommand)
+RegisterCommand("coordsmenu", function(source, args, rawCommand)
     lib.registerContext({
         id = 'coordssaver',
         title = 'Coords saver',
