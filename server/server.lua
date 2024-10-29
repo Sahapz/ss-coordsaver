@@ -6,15 +6,15 @@ local savedCoords = {}
 local formatType = "vec4"
 
 RegisterNetEvent("ss-coordsaver:server:setSaveName", function(saveName, format)
-    local xPlayer = ESX.GetPlayerFromId(source)
-    if xPlayer then
-        if xPlayer.isAdmin() and xPlayer.adminLevel >= 3 then
-            if saveName then
-                currentsave = saveName
-                formatType = tostring(format)
-                TriggerClientEvent("chatMessage", xPlayer.source, "SYSTEM", 1, "Save format set to: " .. formatType .. " and Saving recording is started", 'game')
-            end
-        end
+
+    if saveName then
+        currentsave = saveName
+        formatType = tostring(format)
+        TriggerClientEvent('ox_lib:notify', source, {
+            title = 'Coords',
+            description = 'Coords saving is started',
+            type = 'success'
+        })
     end
 end)
 
@@ -60,7 +60,7 @@ RegisterNetEvent("ss-coordsaver:server:sendPosList", function()
         content = '**' .. currentsave .. '**\n ```\n' .. formattedCoords .. '\n```'
     }
 
-    PerformHttpRequest('https://discord.com/api/webhooks/1300880666824540191/t3uUrE5gLJgTPuC98x3d9yBv1UZa2Z7RBIcN36WzGIzjVL4xE41kmXu5dylWm2t_VTDo', 
+    PerformHttpRequest(cfg.webhook, 
         function(err, text, headers) end, 
         'POST', json.encode(webhookData), 
         { ['Content-Type'] = 'application/json' }
